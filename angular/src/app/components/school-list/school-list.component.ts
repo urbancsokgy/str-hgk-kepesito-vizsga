@@ -21,7 +21,9 @@ export class SchoolListComponent implements OnInit {
   editSchool(id: string){
     this.router.navigate(['school', 'edit', id]);
   }
-
+  editClassroom(){
+    this.router.navigate(['classroom-list']);
+  }
 
 
 }

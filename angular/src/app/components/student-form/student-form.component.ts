@@ -15,22 +15,22 @@ export class StudentFormComponent implements OnInit {
   @ViewChild('form') form: NgForm;
   reactForm: FormGroup;
 
+  student: Student;
   studentId: string;
   studentForm: Student = {firstName:'', lastName:'', email:'', classroom: ClassroomComponent};
 
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
-    private studentService: StudentHttpService,
-    private router: Router
+    private service: StudentHttpService
   ) { }
 
   ngOnInit(): void {
     this.studentId = this.route.snapshot.params.id;
     if(this.studentId){
-      this.studentService.getById(this.studentId).subscribe(
-        data => {
-          this.studentForm = data;
+      this.service.getById(this.studentId).subscribe(
+        data => {this.studentForm = data;
         }
       )
     }
@@ -38,12 +38,12 @@ export class StudentFormComponent implements OnInit {
 
   saveStudent(form : NgForm){
     if(this.studentId){
-      this.studentService.update(form.value, this.studentId).subscribe(
+      this.service.update(form.value, this.studentId).subscribe(
         student => this.router.navigate(['student-list']),
         err => console.error(err)
       )
     }else {
-      this.studentService.save(form.value).subscribe(
+      this.service.save(form.value).subscribe(
         student => this.router.navigate(['student-list']),
         err => console.error(err)
       )
