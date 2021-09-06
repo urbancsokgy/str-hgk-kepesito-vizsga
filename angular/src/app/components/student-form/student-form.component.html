@@ -1,27 +1,21 @@
 
-<div class="row">
-  <div class="col-6 offset-3">
-    <form #form="ngForm" (ngSubmit)="onSave(carForm)">
-      <div class="form-group">
-        <label for="">Model</label>
-        <input class="form-control" type="text" name="model" [(ngModel)]="car.model">
-      </div>
-      <div class="form-group">
-        <label for="">Year</label>
-        <input class="form-control" type="number" name="year" [(ngModel)]="car.year">
-      </div>
-      <div class="form-group">
-        <label for="">Maker</label>
-        <input class="form-control" type="text" name="maker" [(ngModel)]="car.maker">
-      </div>
-      <div class="form-group">
-        <label for="">Price</label>
-        <input class="form-control" type="number" name="price" [(ngModel)]="car.price">
-      </div>
-
-      <button type="submit" [disabled]="carForm.invalid" class="btn btn-primary w-100 mt-3 mb-3">
-        Create a new Car
-      </button>
-    </form>
-  </div>
-</div>
+<div class="container-md mt-3">
+  <form class="p-3" #form="ngForm" id="studentForm" (ngSubmit)="saveStudent(form)">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">FirstName:</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="studentForm.firstName" name="firstName"
+        required #name="ngModel">
+      <small class="text-danger" *ngIf="name.invalid && name.touched">FirstName is required</small>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">LastName:</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="studentForm.lastName" name="lastName" required
+        #name="ngModel">
+      <small class="text-danger" *ngIf="name.invalid && name.touched">LastName is required</small>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="text" class="form-control" id="email" [(ngModel)]="studentForm.email" name="email" required
+        #name="ngModel">
+      <small class="text-danger" *ngIf="name.invalid && name.touched">Email is required</small>
+    </div>
