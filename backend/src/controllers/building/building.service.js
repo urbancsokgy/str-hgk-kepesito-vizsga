@@ -14,4 +14,4 @@
 
 exports.update = (buildingId, className) => Model.findByIdAndUpdate(buildingId, className, { new: true });
 
-exports.getAll = () =>  Model.find().populate('classrooms');
+exports.getAll = () =>  Model.find().populate("classrooms");
