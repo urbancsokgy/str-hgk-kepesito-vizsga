@@ -18,7 +18,10 @@ const SchoolSchema = mongoose.Schema({
         required: true
     },
    
-    classrooms: [string]
+    classroom: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Classroom'
+    }]
 },
     {
         timestamps: true
